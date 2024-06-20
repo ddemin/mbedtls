@@ -24,7 +24,12 @@
 #if !defined(_WIN32)
 #include <cpuid.h>
 #else
-#include <intrin.h>
+// https://stackoverflow.com/questions/25394175/intrin-h-mingw-error-no-such-file-or-directory
+#if defined(__GNUC__)
+    #include <cpuid.h>
+#else
+    #include <intrin.h>
+#endif
 #endif
 #include <immintrin.h>
 #endif
